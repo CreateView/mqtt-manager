@@ -18,7 +18,9 @@
   "dependencies": {
     "eslint": "4.11.0",
     "eslint-config-standard": "10.2.1",
-    "mqtt": "^2.15.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "mqtt": "^2.15.1",
+    "standard": "^10.0.3"
   },
   "keywords": [
     "mqtt"
