@@ -1,0 +1,9 @@
+{
+  "connection": "mqtt://127.0.0.1'",
+  "publication": [
+    "Greeting A",
+    "Bye A"
+  ] ,
+  "subscription":["Greeting B","Bye B"]
+
+}

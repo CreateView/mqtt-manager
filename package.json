@@ -1,0 +1,32 @@
+{
+  "name": "mqtt-service",
+  "version": "0.1.0",
+  "description": "Npm package to configure mqtt in easy way without need for duplicated code",
+  "main": "index.js",
+  "engines": {
+    "node": ">=4.2.4"
+  },
+  "scripts": {
+    "test": "standard",
+    "testA": "node exampleA.js",
+    "testB" :"node exampleB.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CreateView/mqtt-service.git"
+  },
+  "dependencies": {
+    "eslint": "4.11.0",
+    "eslint-config-standard": "10.2.1",
+    "mqtt": "^2.15.1"
+  },
+  "keywords": [
+    "mqtt"
+  ],
+  "author": "“arn-the-long-beard” <arn.menant@gmail.com> (https://github.com/arn-the-long-beard)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CreateView/mqtt-service/issues"
+  },
+  "homepage": "https://github.com/CreateView/mqtt-service#readme"
+}
