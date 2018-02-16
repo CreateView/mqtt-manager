@@ -6,7 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 
 #idea
-
+.idea/
+mqtt-service.iml
 # Runtime data
 pids
 *.pid
