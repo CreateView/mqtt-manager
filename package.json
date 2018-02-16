@@ -7,7 +7,7 @@
     "node": ">=4.2.4"
   },
   "scripts": {
-    "test": "standard",
+    "test": "standard index.js",
     "testA": "node exampleA.js",
     "testB" :"node exampleB.js"
   },
