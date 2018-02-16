@@ -1,5 +1,5 @@
 {
-  "name": "mqtt-service",
+  "name": "@createview/mqtt-service",
   "version": "0.1.0",
   "description": "Npm package to configure mqtt in easy way without need for duplicated code",
   "main": "index.js",

@@ -7,13 +7,13 @@ Npm package to configure mqtt in easy way  without need for duplication code
 [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/dominictarr/stability)
 [![NSP Status](https://nodesecurity.io/orgs/createview/projects/9a685f47-82f6-41dc-bc8b-e8b4753b29d7/badge)](https://nodesecurity.io/orgs/createview/projects/9a685f47-82f6-41dc-bc8b-e8b4753b29d7)
 
-## stability
+## Stability
 
 Expect the unexpected. Please provide feedback on api and your use-case
 
 ## Installation
 
-  `npm install mqtt-servicer`
+  `npm install @createview/mqtt-service`
 
 ## Usage
 
@@ -22,11 +22,13 @@ Expect the unexpected. Please provide feedback on api and your use-case
 {
   "connection": "mqtt://127.0.0.1'",
   "publication": [
-    "TALK_TO_B"
+    "Greeting A",
+    "Bye A"
   ] ,
-  "subscription":["LISTEN_FROM_B"]
+  "subscription":["Greeting B","Bye B"]
 
 }
+
 ```
 
 Here is a way of using it. You can also try `npm run testA` and `npm run testB` is this order
@@ -60,6 +62,10 @@ mqttService.publish(0,'Hello A, how are you doing ?')
 ## Tests
 
 `npm test`
+
+## Comments
+
+The package needs improvement
 
 ## Contributing
 
