@@ -2,6 +2,12 @@
 
 const mqtt = require('mqtt')
 
+/**
+ *
+ * @param message
+ * @returns {any}
+ * @constructor
+ */
 const BuildJsObjectFromMqtt = message => {
   return JSON.parse(message.toString())
 }
@@ -28,7 +34,10 @@ class MqttManager {
       this.init()
     }
   }
-
+  /**
+   *
+   * @returns {Array|*}
+   */
   get subscription () {
     return this._subscription
   }
@@ -83,6 +92,10 @@ class MqttManager {
     this._object = updatedobj
   }
 
+  /**
+   *
+   * @returns {null|*}
+   */
   get object () {
     return this._object
   }
