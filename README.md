@@ -21,42 +21,49 @@ Expect the unexpected. Please provide feedback on api and your use-case
 ```json
 {
   "connection": "mqtt://127.0.0.1'",
-  "publication": [
-    "Greeting A",
-    "Bye A"
-  ] ,
-  "subscription":["Greeting B","Bye B"]
-
+  "publication": {
+    "Greeting B" :  "Greeting B",
+    "Bye B" :  "Bye B"
+  },
+  "subscription":{
+    "Greeting A" : "Greeting A",
+    "Bye A" :   "Bye A"
+  }
 }
-
 ```
 
 Here is a way of using it. You can also try `npm run testA` and `npm run testB` is this order
 
 ```javascript
-function displayGreeting (msg,data,mqttService){
+'use strict'
+const MqttManager = require('./index.js')
+const mqttconfig = require('./configA')
+// define the functions to trig on messages
+function displayGreeting (msg, data, mqttService) {
   console.log(data)
   // can send other message
-  mqttService.publish(1,'bye bye A ')
+  mqttService.publish(mqttconfig.publication['Greeting B'], 'Hello B')
 }
 
-function displayBye (msg,data,mqttService){
+function displayBye (msg, data, mqttService) {
   console.log(data)
   // can send other message
+  mqttService.publish(mqttconfig.publication['Bye B'], 'bye byeB ')
 }
 
 let actions = [
 
 ]
+// add actions on subscriptions
+actions.push({topic: mqttconfig.subscription['Bye A'], func: displayBye})
+actions.push({topic: mqttconfig.subscription['Greeting A'], func: displayGreeting})
 
+// create a new Mqttmanager
+let mqttService = new MqttManager()
 
-actions.push({func: displayGreeting, range: [0, 0]})
-actions.push({func: displayBye, range: [1, 1]})
+// Sett he config
+mqttService.setup(mqttconfig, actions)
 
-mqttService.addActionsOnSubscribtion(actions)
-
-
-mqttService.publish(0,'Hello A, how are you doing ?')
 ```
 
 ## Tests

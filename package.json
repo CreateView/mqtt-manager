@@ -1,6 +1,6 @@
 {
   "name": "@createview/mqtt-manager",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "description": "Npm package to configure mqtt in easy way without need for duplicated code",
   "main": "index.js",
   "engines": {
