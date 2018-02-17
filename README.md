@@ -72,6 +72,9 @@ mqttService.setup(mqttconfig, actions)
 
 ## Comments
 
+
+PS : the packages was previously named @createview/mqtt-service I am very sorry for the desagrement caused by the remove of this package from Npm. I prefered to delete it after 24 h to put a good name on it :)
+
 The package needs improvement
 
 ## Contributing
