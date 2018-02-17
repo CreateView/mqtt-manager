@@ -1,4 +1,4 @@
-# mqtt-service
+# mqtt-manager
 Npm package to configure mqtt in easy way  without need for duplication code
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
@@ -13,7 +13,7 @@ Expect the unexpected. Please provide feedback on api and your use-case
 
 ## Installation
 
-  `npm install @createview/mqtt-service`
+  `npm install mqtt-manager
 
 ## Usage
 

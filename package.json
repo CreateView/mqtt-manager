@@ -1,5 +1,5 @@
 {
-  "name": "@createview/mqtt-service",
+  "name": "@createview/mqtt-manager",
   "version": "0.1.1",
   "description": "Npm package to configure mqtt in easy way without need for duplicated code",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CreateView/mqtt-service.git"
+    "url": "git+https://github.com/CreateView/mqtt-manager.git"
   },
   "dependencies": {
     "eslint": "4.11.0",
@@ -28,7 +28,7 @@
   "author": "“arn-the-long-beard” <arn.menant@gmail.com> (https://github.com/arn-the-long-beard)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/CreateView/mqtt-service/issues"
+    "url": "https://github.com/CreateView/mqtt-manager/issues"
   },
-  "homepage": "https://github.com/CreateView/mqtt-service#readme"
+  "homepage": "https://github.com/CreateView/mqtt-manager#readme"
 }
