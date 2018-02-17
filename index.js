@@ -44,6 +44,13 @@ class MqttManager {
 
   /**
    *
+   * @returns {{}|*}
+   */
+  get publication () {
+    return this._publication
+  }
+  /**
+   *
    */
   connect () {
     this._client = mqtt.connect(this._connection)
