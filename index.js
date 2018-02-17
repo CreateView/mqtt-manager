@@ -6,61 +6,57 @@ const BuildJsObjectFromMqtt = message => {
   return JSON.parse(message.toString())
 }
 
-class MqttService {
+class MqttManager {
   constructor () {
-    this.connection = ''
-    this.publication = []
-    this.subscription = []
-  }
-
-  /**
-   *
-   * @param stringArray
-   * @returns {Array}
-   */
-  buildSubscription (stringArray) {
-    let subscriptions = []
-    stringArray.forEach((string) => {
-      subscriptions.push({msg: string, action: function () {}})
-    })
-    return subscriptions
+    this._connection = ''
+    this._publication = {}
+    this._subscription = []
   }
 
   /**
    *
    * @param config
+   * @param actions
    */
-  setup (config) {
+  setup (config, actions) {
     if (config) {
-      this.connection = config.connection
-      this.publication = config.publication
-      this.subscription = this.buildSubscription(config.subscription)
-      this.object = null
+      this._connection = config.connection
+      this._publication = config.publication
+      this._subscription = actions
+      this._object = null
       this.connect()
       this.init()
     }
   }
 
-  connect () {
-    this.client = mqtt.connect(this.connection)
+  get subscription () {
+    return this._subscription
   }
 
+  /**
+   *
+   */
+  connect () {
+    this._client = mqtt.connect(this._connection)
+  }
+
+  /**
+   *
+   */
   init () {
-    this.client.on('connect', () => {
-      if (this.subscription) {
-        this.subscription.forEach((sub) => {
-          this.client.subscribe(sub.msg)
-        })
-      }
+    this._client.on('connect', () => {
+      this._subscription.forEach((sub) => {
+        this._client.subscribe(sub.topic)
+      })
     })
-    this.client.on('message', (topic, message) => {
+    this._client.on('message', (topic, message) => {
       try {
-        if (this.subscription.indexOf(topic)) {
+        let sub = this.findTopic(topic)
+        if (sub) {
           let data = BuildJsObjectFromMqtt(message)
-          let sub = this.findTopic(topic)
           if (sub) {
-            if (sub.action) {
-              sub.action(sub.action.msg, data, this)
+            if (sub.func) {
+              sub.func(sub.topic, data, this)
             }
           }
         }
@@ -72,29 +68,23 @@ class MqttService {
 
   /**
    *
-   * @param int
+   * @param key
    * @param data
    */
-  publish (int, data) {
-    this.client.publish(this.publication[int], JSON.stringify(data))
+  publish (key, data) {
+    this._client.publish(this._publication[key], JSON.stringify(data))
   }
-  updateObj (updatedobj) {
-    this.object = updatedobj
-  }
+
   /**
    *
-   * @param actions
+   * @param updatedobj
    */
-  addActionsOnSubscribtion (actions) {
-    let i = 0
-    this.subscription.forEach((sub) => {
-      actions.forEach((action) => {
-        if (action.range[0] <= i && action.range[1] >= i) {
-          sub.action = action.func
-        }
-      })
-      i++
-    })
+  set object (updatedobj) {
+    this._object = updatedobj
+  }
+
+  get object () {
+    return this._object
   }
 
   /**
@@ -104,7 +94,7 @@ class MqttService {
    */
   findTopic (string) {
     for (let i = 0; i < this.subscription.length; i++) {
-      if (this.subscription[i].msg === string) {
+      if (this.subscription[i].topic === string) {
         return this.subscription[i]
       }
     }
@@ -113,6 +103,6 @@ class MqttService {
 
 /**
  *
- * @type {MqttService}
+ * @type {MqttManager}
  */
-module.exports = MqttService
+module.exports = MqttManager

@@ -1,27 +1,31 @@
-const MqttService = require('./index.js')
+'use strict'
+const MqttManager = require('./index.js')
 const mqttconfig = require('./configB')
-
-let mqttService = new MqttService()
-mqttService.setup(mqttconfig)
-
+// define the functions to trig on messages
 function displayGreeting (msg, data, mqttService) {
   console.log(data)
   // can send other message
-  mqttService.publish(1, 'bye bye A ')
+  mqttService.publish(mqttconfig.publication['Bye A'], 'bye byeA ')
 }
 
-function displayBye (msg, data) {
+function displayBye (msg, data, mqttService) {
   console.log(data)
   // can send other message
+  // mqttService.publish(mqttconfig.publication['Bye A'], 'bye byeA ')
 }
 
 let actions = [
 
 ]
+// add actions on subscriptions
+actions.push({topic: mqttconfig.subscription['Bye B'], func: displayBye})
+actions.push({topic: mqttconfig.subscription['Greeting B'], func: displayGreeting})
 
-actions.push({func: displayGreeting, range: [0, 0]})
-actions.push({func: displayBye, range: [1, 1]})
+// create a new Mqttmanager
+let mqttManager = new MqttManager()
 
-mqttService.addActionsOnSubscribtion(actions)
+// Sett he config
+mqttManager.setup(mqttconfig, actions)
 
-mqttService.publish(0, 'Hello A, how are you doing ?')
+// talk
+mqttManager.publish(mqttconfig.publication['Greeting A'], 'Hello A')

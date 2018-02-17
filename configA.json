@@ -1,11 +1,13 @@
 {
   "connection": "mqtt://127.0.0.1'",
-  "publication": [
-    "Greeting B",
-    "Bye B"
-  ] ,
-  "subscription":["Greeting A","Bye A"]
-
+  "publication": {
+    "Greeting B" :  "Greeting B",
+    "Bye B" :  "Bye B"
+  },
+  "subscription":{
+    "Greeting A" : "Greeting A",
+    "Bye A" :   "Bye A"
+  }
 }
 
 
