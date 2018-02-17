@@ -13,7 +13,7 @@ Expect the unexpected. Please provide feedback on api and your use-case
 
 ## Installation
 
-  `npm install mqtt-manager
+  `npm install @createview/mqtt-manager
 
 ## Usage
 
