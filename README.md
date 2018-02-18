@@ -3,7 +3,7 @@ Npm package to configure mqtt in easy way  without need for duplication code
 
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/CreateView/mqtt-service.svg?branch=master)](https://travis-ci.org/CreateView/mqtt-service)
+[![Build Status](https://travis-ci.org/CreateView/mqtt-manager.svg?branch=master)](https://travis-ci.org/CreateView/mqtt-manager)
 [![stability-experimental](https://img.shields.io/badge/stability-experimental-orange.svg)](https://github.com/dominictarr/stability)
 [![NSP Status](https://nodesecurity.io/orgs/createview/projects/9a685f47-82f6-41dc-bc8b-e8b4753b29d7/badge)](https://nodesecurity.io/orgs/createview/projects/9a685f47-82f6-41dc-bc8b-e8b4753b29d7)
 
